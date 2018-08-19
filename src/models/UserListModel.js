@@ -7,26 +7,28 @@ class UserListModel {
   @observable todos = [];
 
   constructor(){
-      // Retrieve the object from storage
       let todos = localStorage.getItem('myCat');
       this.todos = JSON.parse(localStorage.getItem('myCat'));
-
   }
 
   @action
   addItem(data) {
     this.todos.push(new UserModel(data));
-      localStorage.setItem('myCat', JSON.stringify(this.todos));
+    this.save()
   }
 
     @action
     updateItem(id, data) {
         this.todos[id] = (new UserModel(data));
-        localStorage.setItem('myCat', JSON.stringify(this.todos));
+        this.save()
     }
   @action
   delItem( id ) {
     this.todos.splice(id, 1);
+    this.save()
+  }
+
+  save(){
       localStorage.setItem('myCat', JSON.stringify(this.todos));
   }
 }

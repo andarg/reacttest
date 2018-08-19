@@ -23,7 +23,7 @@ class EditModal extends React.Component {
     constructor() {
         super();
 
-        this.state  = {name:"", year:""}
+        this.state  = {name:"", year:"",phone: ""}
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
 
@@ -58,7 +58,7 @@ class EditModal extends React.Component {
 
         }
 
-        $("#addUserBtn").hide();
+        $("#addUserBtn").addClass('disabled');
 
         setTimeout(()=>{
 
@@ -81,7 +81,7 @@ class EditModal extends React.Component {
     }
 
     closeModal() {
-        $("#addUserBtn").show();
+        $("#addUserBtn").removeClass('disabled');
         this.setState({
             name: "",
             phone: "",

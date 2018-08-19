@@ -17,12 +17,12 @@ class UsersList extends React.Component {
     render() {
         return (
             <div>
-                <a id='addUserBtn' className="btn-floating btn-large waves-effect waves-light red" onClick={Ctr.open.bind(Ctr)}><i className="material-icons">person_add</i></a>
+                <a id='addUserBtn' className="btn-floating btn-large waves-effect waves-light green" onClick={Ctr.open.bind(Ctr)}><i className="material-icons">person_add</i></a>
                 <ul className="collection">
                     {this.props.store.todos.map((todo, i) => (
 
                         <li className="collection-item avatar" key={i}>
-                            <i className="material-icons circle">person</i>
+                            <i className="material-icons circle  blue lighten-1 ">person</i>
                             <span className="title">{todo.fio}</span>
                         <p>
                             <i className="material-icons prefix small">date_range</i> Дата рождения  <b>{todo.birthday}</b><br/>
