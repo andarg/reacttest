@@ -5,7 +5,6 @@ import 'jquery-mask-plugin';
 import $ from 'jquery'
 import store from "../models/UserListModel";
 
-import {Row, Input} from 'react-materialize'
 Modal.setAppElement('#root');
 
 const customStyles = {
