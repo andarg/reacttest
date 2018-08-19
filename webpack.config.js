@@ -13,6 +13,13 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
+      new webpack.ProvidePlugin({
+          $: 'jquery',
+          jQuery: 'jquery',
+          'window.$': 'jquery',
+          'window.jQuery': 'jquery',
+          'Mater': 'M'
+      }),
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {

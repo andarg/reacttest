@@ -2,26 +2,29 @@ import React from "react";
 import { render } from "react-dom";
 import DevTools from "mobx-react-devtools";
 
-import TodoList from "./components/TodoList";
-import TodoListModel from "./models/TodoListModel";
-import TodoModel from "./models/TodoModel";
+import UsersList from "./components/UsersList";
 
-const store = new TodoListModel();
+import store from "./models/UserListModel";
+import EditModal from './components/Modal'
+import  Ctr from  './models/ModalController'
+
 
 render(
   <div>
     <DevTools />
-    <TodoList store={store} />
+    <UsersList store={store} />
+    <EditModal ctr={Ctr}  />
+
   </div>,
   document.getElementById("root")
 );
 
-store.addTodo("Get Coffee");
-store.addTodo("Write simpler code");
-store.todos[0].finished = true;
+//store.addTodo({fio:"Ася"});
+//store.addTodo({fio:"Вася"});
+//store.todos[0].finished = true;
 
 setTimeout(() => {
-  store.addTodo("Get a cookie as well");
+ // store.addTodo({fio:"Гурген"});
 }, 2000);
 
 // playing around in the console
