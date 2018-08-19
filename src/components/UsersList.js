@@ -33,7 +33,7 @@ class UsersList extends React.Component {
                             <i className="material-icons prefix">phone</i> Телефон <b>{todo.phone}</b><br/>
                         </p>
                             <span className="secondary-content" >
-                        <a href="#!" onClick={()=>{console.log(  i );Ctr.editUser(i)}}><i className="material-icons">edit</i></a><br/>
+                        <a href="#!" onClick={()=>{Ctr.editUser(i)}}><i className="material-icons">edit</i></a><br/>
                         <a href="#!" onClick={()=>this.deleteUser( i )}><i className="material-icons">delete_forever</i></a>
 
                                 </span>

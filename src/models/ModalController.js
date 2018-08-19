@@ -39,7 +39,6 @@ import { observable, computed, action } from "mobx";
 
  @action
  editUser( index ) {
-      console.log( index )
      this.userId = index;
      this.isOpen  = true;
  }

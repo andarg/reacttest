@@ -9,7 +9,6 @@ class UserListModel {
   constructor(){
       // Retrieve the object from storage
       let todos = localStorage.getItem('myCat');
-      console.log('tototdododss ---> ', todos)
       this.todos = JSON.parse(localStorage.getItem('myCat'));
 
   }

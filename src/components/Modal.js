@@ -37,7 +37,6 @@ class EditModal extends React.Component {
 
             let [year,month,day] = user.birthday.split('-')
 
-            console.log(year,month,day, user.birthday )
             this.setState({
                 name: user.fio,
                 phone: user.phone,
