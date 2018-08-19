@@ -97,8 +97,10 @@ class EditModal extends React.Component {
     }
 
     nameChangeHandler(e){
-        this.setState({name: e.target.value})
-        this.props.ctr.name=e.target.value
+
+        let n = e.target.value.replace(/[^a-zA-Zа-яА-Я]/, "")
+        this.setState({name: n})
+        this.props.ctr.name= n
     }
     phoneChangeHandler(e){
         this.setState({phone: e.target.value})
@@ -114,8 +116,6 @@ class EditModal extends React.Component {
         data.city = this.state.city
         data.phone = this.state.phone
 
-
-        console.dir( data )
         if(this.props.ctr.userId==null){
 
             store.addItem(data)
