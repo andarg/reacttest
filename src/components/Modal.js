@@ -178,7 +178,7 @@ class EditModal extends React.Component {
                             <div className="row">
                                 <div className="input-field col s4">
                                     <select required="required" className="validate"  id='year' value={this.state.year} onChange={(e)=>this.setS('year', e.target.value)}>
-                                        <option value=""  >Год рождения</option>
+                                        <option  ></option>
                                         {this.getYears().map(( i) => (
                                             <option value={i}>{i}</option>
                                         ))}
@@ -197,12 +197,12 @@ class EditModal extends React.Component {
                                 </div>
                                 <div className="input-field col s4">
                                     <select value={this.state.day} onChange={(e)=>this.setS('day', e.target.value)}>
-                                        <option   value=""  >День рождения</option>
+                                        <option    > </option>
                                         {this.range(1, 31).map(( i) => (
                                             <option value={i}>{i}</option>
                                         ))}
                                     </select>
-                                    <label htmlFor="day"><i className={(this.state.day?'':'red-text')}>*</i> Месяц рождения</label>
+                                    <label htmlFor="day"><i className={(this.state.day?'':'red-text')}>*</i> День рождения</label>
                                 </div>
                             </div>
                             <div className="row">
