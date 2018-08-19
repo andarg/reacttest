@@ -7,7 +7,6 @@ class UserListModel {
   @observable todos = [];
 
   constructor(){
-      let todos = localStorage.getItem('myCat');
       this.todos = JSON.parse(localStorage.getItem('myCat'));
   }
 
@@ -17,11 +16,12 @@ class UserListModel {
     this.save()
   }
 
-    @action
-    updateItem(id, data) {
-        this.todos[id] = (new UserModel(data));
-        this.save()
+  @action
+  updateItem(id, data) {
+      this.todos[id] = (new UserModel(data));
+      this.save()
     }
+
   @action
   delItem( id ) {
     this.todos.splice(id, 1);

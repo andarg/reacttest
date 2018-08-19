@@ -19,17 +19,23 @@ const customStyles = {
 };
 
 @observer
-class EditModal extends React.Component {
+class EditModal extends React.Component{
     constructor() {
         super();
 
-        this.state  = {name:"", year:"",phone: ""}
+        this.state  = {
+            name: "",
+            phone: "",
+            addres: "",
+            city: "",
+            year: "",
+            month: "",
+            day: ""
+        }
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
 
     }
-
-
 
     afterOpenModal() {
         if(this.props.ctr.userId!=null){
@@ -45,10 +51,7 @@ class EditModal extends React.Component {
                 year: year,
                 month: month,
                 day: day,
-            })
-
-
-
+            });
 
             this.props.ctr.name = user.fio
             this.props.ctr.phone =  user.phone
@@ -62,7 +65,7 @@ class EditModal extends React.Component {
 
         setTimeout(()=>{
 
-        let elems = document.querySelectorAll('select');
+        const elems = document.querySelectorAll('select');
         M.FormSelect.init(elems, {});
 
         }, 100)
@@ -72,11 +75,6 @@ class EditModal extends React.Component {
         $('#icon_telephone').mask("+7(999) 999-99-99", {
 
         });
-
-
-
-
-
 
     }
 
@@ -96,11 +94,11 @@ class EditModal extends React.Component {
     }
 
     nameChangeHandler(e){
-
-        let n = e.target.value.replace(/[^a-zA-Zа-яА-Я]/, "")
+        const n = e.target.value.replace(/[^a-zA-Zа-яА-Я]/, "")
         this.setState({name: n})
         this.props.ctr.name= n
     }
+
     phoneChangeHandler(e){
         this.setState({phone: e.target.value})
         this.props.ctr.phone=e.target.value
@@ -108,7 +106,6 @@ class EditModal extends React.Component {
 
     saveUser(){
         let data = {}
-
         data.fio = this.state.name
         data.birthday = this.state.year + (this.state.month?'-'+this.state.month:"")+(this.state.day?  '-'+this.state.day:"")
         data.addres = this.state.addres
@@ -116,14 +113,12 @@ class EditModal extends React.Component {
         data.phone = this.state.phone
 
         if(this.props.ctr.userId==null){
-
             store.addItem(data)
             this.closeModal();
         }else{
             store.updateItem(this.props.ctr.userId,data)
             this.closeModal();
         }
-
     }
 
     range(start, end ) {
@@ -135,7 +130,7 @@ class EditModal extends React.Component {
     }
 
     getYears(){
-        let start = (new Date()).getFullYear();
+        const start = (new Date()).getFullYear();
         return this.range(start-100, start).reverse()
     }
 
@@ -158,8 +153,6 @@ class EditModal extends React.Component {
                     onRequestClose={this.closeModal}
                     style={customStyles}
                 >
-
-
                     <div className="row" >
                         <form className="col s12">
                             <div className="row">
@@ -177,28 +170,28 @@ class EditModal extends React.Component {
                             <div className="row">
                                 <div className="input-field col s4">
                                     <select required="required" className="validate"  id='year' value={this.state.year} onChange={(e)=>this.setS('year', e.target.value)}>
-                                        <option  ></option>
+                                        <option > </option>
                                         {this.getYears().map(( i) => (
-                                            <option value={i}>{i}</option>
+                                            <option value={i} key={"key_year_"+i}>{i}</option>
                                         ))}
                                     </select>
                                     <label htmlFor="year"><i className={(this.state.year?'':'red-text')}>*</i> Месяц рождения</label>
                                 </div>
                                 <div className="input-field col s4">
-                                    <select value={this.state.month} id="monpth" required="required" className="validate"  onChange={(e)=>this.setS('month', e.target.value)}>
-                                        <option     ></option>
+                                    <select value={this.state.month} id="month" required="required" className="validate"  onChange={(e)=>this.setS('month', e.target.value)}>
+                                        <option> </option>
                                         {this.range(1, 12).map(( i) => (
-                                            <option value={i}>{i}</option>
+                                            <option value={i} key={"key_month_"+i}>{i}</option>
                                         ))}
                                     </select>
-                                    <label htmlFor="monpth"><i className={(this.state.month?'':'red-text')}>*</i> Месяц рождения</label>
+                                    <label htmlFor="month"><i className={(this.state.month?'':'red-text')}>*</i> Месяц рождения</label>
 
                                 </div>
                                 <div className="input-field col s4">
                                     <select value={this.state.day} onChange={(e)=>this.setS('day', e.target.value)}>
-                                        <option    > </option>
+                                        <option> </option>
                                         {this.range(1, 31).map(( i) => (
-                                            <option value={i}>{i}</option>
+                                            <option value={i} key={"key_day_"+i}>{i}</option>
                                         ))}
                                     </select>
                                     <label htmlFor="day"><i className={(this.state.day?'':'red-text')}>*</i> День рождения</label>

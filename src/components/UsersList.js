@@ -8,11 +8,10 @@ class UsersList extends React.Component {
 
     deleteUser( i ){
         const r = window.confirm("Удалить пользователя?");
-        if(r == true){
+        if(r === true){
             this.props.store.delItem(i)
         }
     }
-
 
     render() {
         return (
@@ -21,7 +20,7 @@ class UsersList extends React.Component {
                 <ul className="collection">
                     {this.props.store.todos.map((todo, i) => (
 
-                        <li className="collection-item avatar" key={i}>
+                        <li className="collection-item avatar" key={"user_key"+i}>
                             <i className="material-icons circle  blue lighten-1 ">person</i>
                             <span className="title">{todo.fio}</span>
                         <p>

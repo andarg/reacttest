@@ -12,16 +12,14 @@ import { observable, computed, action } from "mobx";
       this.userId = null;
   }
 
-     @computed
-     get validPhone() {
-
-         return (this.phone == '' || /^\+7\(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(this.phone));
-
-     }
+  @computed
+  get validPhone() {
+      return (this.phone == '' || /^\+7\(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(this.phone));
+  }
   @computed
   get valid() {
 
-      let t =( this.year && this.month && this.day && /^[ a-zA-Zа-яА-Я]{2,100}$/.test(this.name) &&   this.validPhone);
+      const t =( this.year && this.month && this.day && /^[ a-zA-Zа-яА-Я]{2,100}$/.test(this.name) &&   this.validPhone);
 
       return t
   }
@@ -31,11 +29,11 @@ import { observable, computed, action } from "mobx";
     this.isOpen  = true;
   }
 
-    @action
-    close() {
-        this.userId = null;
-        this.isOpen  = false;
-    }
+  @action
+  close() {
+    this.userId = null;
+    this.isOpen  = false;
+  }
 
  @action
  editUser( index ) {
