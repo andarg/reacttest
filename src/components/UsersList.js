@@ -6,9 +6,7 @@ import Ctr from '../models/ModalController'
 class UsersList extends React.Component {
 
 
-
     deleteUser( i ){
-
         const r = window.confirm("Удалить пользователя?");
         if(r == true){
             this.props.store.delItem(i)
