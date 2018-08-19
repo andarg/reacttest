@@ -14,13 +14,6 @@ class UserListModel {
 
   }
 
-  @computed
-  get unfinishedTodoCount() {
-    return this.todos.filter(todo => !todo.finished).length;
-  }
-
-
-
   @action
   addItem(data) {
     this.todos.push(new UserModel(data));
@@ -28,7 +21,7 @@ class UserListModel {
   }
 
     @action
-    updateUser(id, data) {
+    updateItem(id, data) {
         this.todos[id] = (new UserModel(data));
         localStorage.setItem('myCat', JSON.stringify(this.todos));
     }

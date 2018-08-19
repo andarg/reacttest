@@ -121,7 +121,7 @@ class EditModal extends React.Component {
             store.addItem(data)
             this.closeModal();
         }else{
-            store.updateUser(this.props.ctr.userId,data)
+            store.updateItem(this.props.ctr.userId,data)
             this.closeModal();
         }
 
