@@ -19,13 +19,5 @@ render(
   document.getElementById("root")
 );
 
-//store.addTodo({fio:"Ася"});
-//store.addTodo({fio:"Вася"});
-//store.todos[0].finished = true;
-
-setTimeout(() => {
- // store.addTodo({fio:"Гурген"});
-}, 2000);
-
 // playing around in the console
 window.store = store;
