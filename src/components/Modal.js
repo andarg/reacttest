@@ -54,6 +54,9 @@ class EditModal extends React.Component {
 
             this.props.ctr.name = user.fio
             this.props.ctr.phone =  user.phone
+            this.props.ctr.year =  year
+            this.props.ctr.month =  month
+            this.props.ctr.day =  day
 
         }
 
@@ -143,6 +146,7 @@ class EditModal extends React.Component {
         let _state = {}
         _state[k] = v
         this.setState(_state)
+        this.props.ctr[k]=v
 
     }
 
@@ -163,33 +167,33 @@ class EditModal extends React.Component {
                             <div className="row">
                                 <div className="input-field col s6">
                                     <i className="material-icons prefix">account_circle</i>
-                                    <input value={this.state.name} id="icon_prefix" type="text" data-length="100" onChange={this.nameChangeHandler.bind(this)} className="validate" />
-                                    {this.state.name?'':<label htmlFor="icon_prefix">First Name</label>}
+                                    <input required="required"  value={this.state.name} id="icon_prefix" type="text" data-length="100" onChange={this.nameChangeHandler.bind(this)} className="validate" />
+                                    {this.state.name?'':<label htmlFor="icon_prefix"><i className={(this.state.name?'':'red-text')}>*</i> First Name</label>}
                                 </div>
                                 <div className="input-field col s6">
                                     <i className="material-icons prefix">phone</i>
-                                    <input value={this.state.phone} id="icon_telephone" type="tel" className="validate" onChange={this.phoneChangeHandler.bind(this)} />
-                                    {this.state.phone?'':<label htmlFor="icon_telephone" >Telephone</label>}
+                                    <i> </i><input value={this.state.phone} id="icon_telephone" type="tel" className={"validate"+(this.props.ctr.validPhone ? "":" invalid")} onChange={this.phoneChangeHandler.bind(this)} />
+                                    {(this.state.phone)?'':<label htmlFor="icon_telephone" >Telephone</label>}
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="input-field col s4">
-                                    <select value={this.state.year} onChange={(e)=>this.setS('year', e.target.value)}>
+                                    <select required="required" className="validate"  id='year' value={this.state.year} onChange={(e)=>this.setS('year', e.target.value)}>
                                         <option value=""  >Год рождения</option>
                                         {this.getYears().map(( i) => (
                                             <option value={i}>{i}</option>
                                         ))}
-
-
                                     </select>
+                                    <label htmlFor="year"><i className={(this.state.year?'':'red-text')}>*</i> Месяц рождения</label>
                                 </div>
                                 <div className="input-field col s4">
-                                    <select value={this.state.month}  onChange={(e)=>this.setS('month', e.target.value)}>
-                                        <option  value=""   >Месяц рождения</option>
+                                    <select value={this.state.month} id="monpth" required="required" className="validate"  onChange={(e)=>this.setS('month', e.target.value)}>
+                                        <option     ></option>
                                         {this.range(1, 12).map(( i) => (
                                             <option value={i}>{i}</option>
                                         ))}
                                     </select>
+                                    <label htmlFor="monpth"><i className={(this.state.month?'':'red-text')}>*</i> Месяц рождения</label>
 
                                 </div>
                                 <div className="input-field col s4">
@@ -199,6 +203,7 @@ class EditModal extends React.Component {
                                             <option value={i}>{i}</option>
                                         ))}
                                     </select>
+                                    <label htmlFor="day"><i className={(this.state.day?'':'red-text')}>*</i> Месяц рождения</label>
                                 </div>
                             </div>
                             <div className="row">
